@@ -1,9 +1,9 @@
 ## 1、用vue-cli 项目脚手架 生成一个vue项目,依赖webpack
     https://www.cnblogs.com/chengdabelief/p/6879155.html
 
-##2、运行项目：npm run dev    
+## 2、运行项目：npm run dev    
            localhost:8080
-##3、 本地上传代码到git
+## 3、 本地上传代码到git
     1. git init （第一次的时候要初始化，以后就不用了）
     2. git add .
     3. git commit -m "注释"
