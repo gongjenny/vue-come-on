@@ -10,4 +10,5 @@
     4. 连接远程git：git remote add origin https://github.com/gongjenny/vue-come-on.git(一个项目只用一次连接就可以了)
     5. 更新远程代码 ：git pull 
     6. 提交本地代码 ：git push --set-upstream origin master （第一次链接git使用，之后就用git push即可）
+    7.
 
