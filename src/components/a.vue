@@ -1,15 +1,23 @@
 <template>
   <div>
       {{hello}}
+      <button  @click ='emitMyEvent'>emit</button>
+      {{number}}
   </div>
 </template>
 <script>
 export default {
-  data(){
-      return {
-          hello :'i am compent a'
-      }
-  }
+    props: ['number' ],
+    data(){
+        return {
+            hello :'i am compent a'
+        }
+    },
+    methods: {
+        emitMyEvent(){
+            this.$emit('my-event',this.hello);
+        }
+    }
 }
 </script>
 

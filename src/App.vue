@@ -13,19 +13,27 @@
           {{value + key}}
         </li>
       </ul>
-      <componentA></componentA>  
+      <comA @my-event='onComEvent'></comA>  
       <button v-on:click = 'addItem'>addItem</button>
+
+      <input type="text" v-model="myValue">
+        {{myValue*num}}
+
+        <com-a number = 15></com-a>
   </div>
 </template>
 
 <script>
-import componentA from './components/a'
+import Vue from 'vue'
+import comA from './components/a'
 export default {
   components :{
-    componentA
+    comA
   },
   data (){
     return {
+      myValue:'',
+      num:2,
       hello: 'world',
       list:[
         {
@@ -46,7 +54,13 @@ export default {
   },
   methods : {
     addItem(){
-      console.log(this.list)
+      Vue.set(this.list,1,{
+        name:'haha',
+        age :'16'
+      })
+    },
+    onComEvent (param){
+      console.log(param)
     }
   }
 
