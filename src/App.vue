@@ -8,7 +8,7 @@
         </li>
       </ul>
       <ul>
-         <li v-for = "(value,key ) in objList">
+         <li v-for = "(value,key) in objList">
            2222222
           {{value + key}}
         </li>
@@ -19,7 +19,14 @@
       <input type="text" v-model="myValue">
         {{myValue*num}}
 
-        <com-a number = 15></com-a>
+      <com-a number = 15></com-a>
+
+
+      <transition name="fade">
+        <p v-show='show'>i am show </p>
+      </transition>
+      <button v-on:click = 'show=!show'>Toggle</button>  
+      <p v-color= "'red'">ppppp</p>
   </div>
 </template>
 
@@ -30,8 +37,14 @@ export default {
   components :{
     comA
   },
+  directives: {
+    color: function(el,binding){
+      el.style.color = binding.value;
+    }
+  },
   data (){
     return {
+      show: true,
       myValue:'',
       num:2,
       hello: 'world',
@@ -75,5 +88,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.fade-enter-active,.fade-leave-active {
+  transition : all .5s ease-out;
+}
+
+.fade-enter,.fade-leave-active{
+  opacity: 0;
 }
 </style>
