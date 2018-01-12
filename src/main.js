@@ -1,12 +1,25 @@
 import Vue from 'vue'
-import App from './App'
+import App1 from './App'
 import VueRouter from 'vue-router'
-
+import Apple from './components/apple'
+import Banana from './components/banana'
 Vue.use(VueRouter)
-let router  = new VueRouter()
+let router = new VueRouter({
+    routes: [
+        {
+          path: '/apple',
+          component: Apple
+        },
+        {
+          path: '/banana',
+          component:Banana
+        }
+    ]
+}) 
 
 new Vue({
-  router,
   el: '#app',
-  render: h => h(App)
+  router,
+  template: '<App1/>',
+  components: { App1 }
 })

@@ -21,7 +21,7 @@
     data：function(){return{a:1,b:2}}
 ``` 
 ## 5、
-    vue 2.0 不能再用{{}}这种形式，给标签添加属性，用v-bind：或：添加
+    vue 2.0 不能再用{{}}这种形式给标签添加属性，用v-bind：或：添加
     例如： v-bind：title = '变量名' 或 :title ='变量名'
 ## 6、
     export default{} 是es6 的新语法，相当于导出里面的内容
@@ -43,4 +43,11 @@
 ## 14、scope 作用域
      例如：<style scope>  </style>  
      当前的  style 只对当前的组件起作用，若父组件引入改组件，父组件无该样式
-##  第五章 4-8节 刚开始
+## 15、使用vue-router步骤
+    1. import VueRouter from 'vue-router'  先引进来一个这样的库
+    2. Vue.use(VueRouter) 让vue使用这个库
+    3. let router  = new VueRouter() 实例化一个这样的路由
+    4. new Vue({router})  再把这个实例化的router 引进 vue 里面
+## 16、new Vue(el: '#app',template: '<App1/>',components: { App1 })
+    template: '<App1/>':是vue最新的用法。意思是用 <app1></app1> 将挂载到 id='app'的元素替换，挂载元素的内容都将被忽略。  其中 App1，要和引进来的  import App1 from './App'  一致。
+    

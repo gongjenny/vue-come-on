@@ -1,6 +1,10 @@
 <template>
   <div id="app" :title='hello'>
-      {{hello}}
+     <router-view></router-view>
+
+
+
+      <!-- {{hello}}
       <ul>
         <li v-for = "(item, index) in list">
           11111
@@ -26,54 +30,56 @@
         <p v-show='show'>i am show </p>
       </transition>
       <button v-on:click = 'show=!show'>Toggle</button>  
-      <p v-color= "'red'">ppppp</p>
+      <p v-color= "'red'">ppppp</p> -->
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import comA from './components/a'
-export default {
-  components :{
-    comA
-  },
-  directives: {
-    color: function(el,binding){
-      el.style.color = binding.value;
-    }
-  },
+ import Vue from 'vue'
+//  import comA from './components/a'
+//  import apple from './components/apple'
+//  import banana from './components/banana'
+ export default {
+  // components :{
+  //   comA
+  // },
+  // directives: {
+  //   color: function(el,binding){
+  //     el.style.color = binding.value;
+  //   }
+  // },
   data (){
     return {
-      show: true,
-      myValue:'',
-      num:2,
-      hello: 'world',
-      list:[
-        {
-          name: 'gong',
-          age :'18'
-        },
-        {
-          name: 'fang',
-          age :'28'
-        }
+      // show: true,
+      // myValue:'',
+      // num:2,
+       hello: 'world',
+      // list:[
+      //   {
+      //     name: 'gong',
+      //     age :'18'
+      //   },
+      //   {
+      //     name: 'fang',
+      //     age :'28'
+      //   }
 
-      ],
-      objList: {
-        name:'jenny',
-        age :'16'
-      }
+      // ],
+      // objList: {
+      //   name:'jenny',
+      //   age :'16'
+      // }
     }
   },
   methods : {
     addItem(){
-      Vue.set(this.list,1,{
-        name:'haha',
-        age :'16'
-      })
+      // Vue.set(this.list,1,{
+      //   name:'haha',
+      //   age :'16'
+      // })
     },
     onComEvent (param){
-      console.log(param)
+      //console.log(param)
     }
   }
 
