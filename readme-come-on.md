@@ -50,4 +50,11 @@
     4. new Vue({router})  再把这个实例化的router 引进 vue 里面
 ## 16、new Vue(el: '#app',template: '<App1/>',components: { App1 })
     template: '<App1/>':是vue最新的用法。意思是用 <app1></app1> 将挂载到 id='app'的元素替换，挂载元素的内容都将被忽略。  其中 App1，要和引进来的  import App1 from './App'  一致。
-    
+## 17、router-link
+   <router-link :to="{path:'页面名称'}"> to banana </router-link>
+   可以用来跳转组件页面
+## 18、mode
+    去掉项目里面的hash值，让项目按照h5的页面路径走，就可以用 path: '/apple/:color',这种方法传递参数了，否则页面不显示。
+    即 new VueRouter({mode :'history' }) 
+## 19、获取参数
+    this.$route.params  获取当前页面传递的参数

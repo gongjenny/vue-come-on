@@ -1,9 +1,10 @@
 <template>
   <div id="app" :title='hello'>
-     <router-view></router-view>
+    <router-view></router-view>
+    <router-link :to="{path:'apple'}"> to apple </router-link>
+    <router-link :to="{path:'banana'}"> to banana </router-link>
 
-
-
+   
       <!-- {{hello}}
       <ul>
         <li v-for = "(item, index) in list">

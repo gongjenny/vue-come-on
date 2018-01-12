@@ -5,9 +5,10 @@ import Apple from './components/apple'
 import Banana from './components/banana'
 Vue.use(VueRouter)
 let router = new VueRouter({
+    mode: 'history',
     routes: [
         {
-          path: '/apple',
+          path: '/apple/:color',
           component: Apple
         },
         {
