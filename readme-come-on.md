@@ -54,7 +54,16 @@
    <router-link :to="{path:'页面名称'}"> to banana </router-link>
    可以用来跳转组件页面
 ## 18、mode
-    去掉项目里面的hash值，让项目按照h5的页面路径走，就可以用 path: '/apple/:color',这种方法传递参数了，否则页面不显示。
+    去掉项目里面的hash值，让项目按照h5模式的路径走，然后就可以用 path: '/apple/:color',这种方法传递参数了，否则页面不显示。
     即 new VueRouter({mode :'history' }) 
 ## 19、获取参数
     this.$route.params  获取当前页面传递的参数
+## 20、routes：定义路由
+    routes 是定义了跳转的地址和对应的组件
+## 21、router-link：跳转路由
+    router-link 和 routes 里面的 path名称 要对应上
+## 22、$route：承载路由信息
+    承载了当前激活的路由信息对象，这个属性是只读的。
+## 23、redirect：重定向
+## 24、vuex：是一个状态管理的插件
+## 第六章第二节(2)

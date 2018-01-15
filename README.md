@@ -55,7 +55,7 @@
    <router-link :to="{path:'页面名称'}"> to banana </router-link>
    可以用来跳转组件页面
 ## 18、mode
-    去掉项目里面的hash值，让项目按照h5的页面路径走，就可以用 path: '/apple/:color',这种方法传递参数了，否则页面不显示。
+    mode用来去掉项目里面的hash值，让项目按照h5的页面路径走，然后就可以用 path: '/apple/:color',这种形式传递参数了，否则对应页面不显示。
     即 new VueRouter({mode :'history' }) 
 ## 19、获取参数
     this.$route.params  获取当前页面传递的参数
