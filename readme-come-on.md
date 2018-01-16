@@ -61,9 +61,48 @@
 ## 20、routes：定义路由
     routes 是定义了跳转的地址和对应的组件
 ## 21、router-link：跳转路由
-    router-link 和 routes 里面的 path名称 要对应上
+    router-link 和 routes 里面的 path名称 要对应上 
 ## 22、$route：承载路由信息
     承载了当前激活的路由信息对象，这个属性是只读的。
-## 23、redirect：重定向
-## 24、vuex：是一个状态管理的插件
-## 第六章第二节(2)
+## 23、redirect
+    重定向
+## 24、vuex
+    是一个状态管理的插件
+## 25、基础知识学会了，写项目目前没遇到什么不懂的问题，真棒~！继续加油了！！！
+## 26、vue-resource
+    是 ajax 请求数据的一个插件
+## 27、json-server 
+    VUE开发请求本地数据的配置，早期的vue-lic下面有dev-server.js和dev-client.js两文件，请求本地数据在dev-server.js里配置，最新的vue-webpack-template 中已经去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替；
+    具体操作如下,打开webpack.dev.conf.js：
+``` 
+    1.在const portfinder = require('portfinder')后添加如下代码：
+
+    var appData = require('../data.json')//加载本地数据文件，创建data.json文件，和入口文件index.html同级
+    var seller = appData.seller//获取对应的本地数据，后面'seller' 是data.json里面的数据，前面的'seller'用来对应后面的名称配置
+```
+``` 
+    2.然后找到devServer,在里面添加:
+    before(app) {
+        app.get('/api/seller', (req, res) => { // 'seller' 对应上面的配置
+            res.json({
+            errno: 0,
+            data: seller
+            })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+        })
+    }
+```
+```
+    3、重新启动项目
+       npm run dev
+```
+```
+    4、给出data.json的数据
+    {
+        "seller": {
+            "name": "粥品香坊（回龙观）",
+            "avatar": "http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg",
+            "infos": "该商家支持发票,请下单写好发票抬头"
+        }
+    } 
+```
+## 28、第六章第4节(1)4:00

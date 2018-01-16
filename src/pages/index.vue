@@ -13,9 +13,6 @@
                     </ul>
                     <div v-if="!product.last" class="hr"></div>
                 </template>
-
-
-
             </div>
             <div class="index-left-block lastest-news">
                 <h2>最新消息</h2>
@@ -24,19 +21,36 @@
                         <a :href="news.url" >{{news.title}}</a> 
                     </li>
                 </ul>
-
-
-
-
             </div>
         </div>
         <div class="index-right">
-
+            <div class="index-board-list">
+                <div class="index-board-item" 
+                v-for="(item,index) in boardList"
+                :class = "[{'line-last': index%2 !== 0}, 'index-board-'+item.id]">
+                    <div class="index-board-item-inner">
+                        <h2>{{item.title}}</h2>
+                        <p>{{item.description}}</p>
+                        <div class="index-board-button">
+                            <a href="" class="button">立即购买</a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
         </div>
   </div>
 </template>
 <script>
 export default {
+    created:function(){
+        this.$http.get('getList').then(function(data){
+            console.log(data)
+        },function(err){
+            console.log(err)
+        })
+    } ,
+
+
     data(){
         return {
             boardList: [
@@ -195,7 +209,18 @@ export default {
   min-height: 125px;
   padding-left: 120px;
 }
-
+.index-board-car .index-board-item-inner{
+  background: url(../assets/images/1.png) no-repeat;
+}
+.index-board-loud .index-board-item-inner{
+  background: url(../assets/images/2.png) no-repeat;
+}
+.index-board-earth .index-board-item-inner{
+  background: url(../assets/images/3.png) no-repeat;
+}
+.index-board-hill .index-board-item-inner{
+  background: url(../assets/images/4.png) no-repeat;
+}
 .index-board-item h2 {
   font-size: 18px;
   font-weight: bold;
