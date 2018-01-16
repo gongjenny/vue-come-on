@@ -103,6 +103,11 @@
             "avatar": "http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg",
             "infos": "该商家支持发票,请下单写好发票抬头"
         }
-    } 
+    }  
 ```
+```
+    5、输入下面地址，可看api内容
+       http://localhost:8080/api/seller
+```
+
 ## 28、第六章第4节(1)4:00
