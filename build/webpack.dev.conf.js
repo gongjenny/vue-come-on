@@ -10,8 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-var appData = require('../data.json')//加载本地数据文件
-var seller = appData.seller//获取对应的本地数据
+var appData = require('../db.json')//加载本地数据文件
+var getNewsList = appData.getNewsList//获取对应的本地数据
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -26,11 +26,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // these devServer options should be customized in /config/index.js
   devServer: {
     before(app) {
-      app.get('/api/seller', (req, res) => {
+      app.get('/api/getNewsList', (req, res) => {
         res.json({
           errno: 0,
-          data: seller
-        })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+          data: getNewsList
+        })//接口返回json数据，上面配置的数据,就赋值给data请求后调用
       })
     },
     clientLogLevel: 'warning',

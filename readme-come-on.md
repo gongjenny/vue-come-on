@@ -71,7 +71,7 @@
 ## 25、基础知识学会了，写项目目前没遇到什么不懂的问题，真棒~！继续加油了！！！
 ## 26、vue-resource
     是 ajax 请求数据的一个插件
-## 27、json-server 
+## 27、安装本地的测试服务器 
     VUE开发请求本地数据的配置，早期的vue-lic下面有dev-server.js和dev-client.js两文件，请求本地数据在dev-server.js里配置，最新的vue-webpack-template 中已经去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替；
     具体操作如下,打开webpack.dev.conf.js：
 ``` 
@@ -96,7 +96,19 @@
        npm run dev
 ```
 ```
-    4、给出data.json的数据
+    4、调取接口
+       created:function(){
+        this.$http.get('api/getNewsList').then(function(data){
+            _this.newList = res.data.data; // 注意是两个data哦！
+        },function(err){
+            console.log(err)
+        })
+    },
+```
+
+
+```
+    5、给出data.json的数据
     {
         "seller": {
             "name": "粥品香坊（回龙观）",
@@ -106,8 +118,36 @@
     }  
 ```
 ```
-    5、输入下面地址，可看api内容
+    6、输入下面地址，可看api内容
        http://localhost:8080/api/seller
 ```
 
-## 28、第六章第4节(1)4:00
+## 28、img 图片引入
+      只能用require('图片地址')的形式引入图片地址，才能被webpack打包
+## 29、每一个template模板，只能有一个root
+    即：template里层只能有一个root div1，包裹其他所有的div块
+```
+    <template>
+        <div class='div1'>
+            <div class='div2'></div>
+            <div class='div3'></div>
+        </div>
+    </template>
+```
+## 30、mounted函数
+       mounted ：钩子函数，它可以通过系统来访问正常情况下无法访问的消息
+## 31、computed计算属性
+       computed：是一个对象，里面把要改变的变量，当成一个函数写进去，返回的值直接作用到当前变量上。
+```
+    例如：
+        computed: {
+            prevIndex() {
+                if(this.nowIndex === 0){
+                    return this.slides.length - 1;  // return的值直接赋值到prevIndex上
+                }
+                else{
+                    return this.nowIndex - 1;
+                }
+            },
+        }
+```
