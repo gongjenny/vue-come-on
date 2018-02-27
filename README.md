@@ -59,6 +59,104 @@
     即 new VueRouter({mode :'history' }) 
 ## 19、获取参数
     this.$route.params  获取当前页面传递的参数
+## 20、routes：定义路由
+    routes 是定义了跳转的地址和对应的组件
+## 21、router-link：跳转路由
+    router-link 和 routes 里面的 path名称 要对应上 
+## 22、$route：承载路由信息
+    承载了当前激活的路由信息对象，这个属性是只读的。
+## 23、redirect
+    重定向
+## 24、vuex
+    是一个状态管理的插件
+## 25、基础知识学会了，写项目目前没遇到什么不懂的问题，真棒~！继续加油了！！！
+## 26、vue-resource
+    是 ajax 请求数据的一个插件
+## 27、配置本地的数据交互 (即本地模拟数据交互)
+    VUE开发请求本地数据的配置，早期的vue-lic下面有dev-server.js和dev-client.js两文件，请求本地数据在dev-server.js里配置，最新的vue-webpack-template 中已经去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替；
+    具体操作如下,打开webpack.dev.conf.js：
+``` 
+    1.在const portfinder = require('portfinder')后添加如下代码：
+
+    var appData = require('../data.json')//加载本地数据文件，创建data.json文件，和入口文件index.html同级
+    var getNewsList = appData.getNewsList//获取对应的本地数据，后面'getNewsList' 是data.json里面的数据，前面的'getNewsList'用来对应后面的名称配置
+```
+``` 
+    2.然后找到devServer,在里面添加:
+    before(app) {
+        app.get('/api/getNewsList', (req, res) => { // 'getNewsList' 对应上面的配置
+            res.json({
+                errno: 0,
+                data: seller
+            })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+        })
+    }
+```
+```
+    3、重新启动项目
+       npm run dev
+```
+```
+    4、调取本地接口
+       created:function(){
+            this.$http.get('api/getNewsList').then(function(data){
+                _this.newList = res.data.data; // 注意是两个data哦！
+            },function(err){
+                console.log(err)
+            })
+        },
+```
+
+
+```
+    5、给出data.json的数据
+    {
+        "getNewsList": {
+            "name": "粥品香坊（回龙观）",
+            "avatar": "http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg",
+            "infos": "该商家支持发票,请下单写好发票抬头"
+        }
+    }  
+```
+```
+    6、输入下面地址，可看api内容
+       http://localhost:8080/api/getNewsList
+```
+
+## 28、img 图片引入
+      只能用require('图片地址')的形式引入图片地址，才能被webpack打包
+## 29、每一个template模板，只能有一个root
+    即：template里层只能有一个root div1，包裹其他所有的div块
+```
+    <template>
+        <div class='div1'>
+            <div class='div2'></div>
+            <div class='div3'></div>
+        </div>
+    </template>
+```
+## 30、mounted函数
+       mounted ：钩子函数，它可以通过系统来访问正常情况下无法访问的消息
+## 31、computed计算属性
+       computed：是一个对象，里面把要改变的变量，当成一个函数写进去，返回的值直接作用到当前变量上。
+```
+    例如：
+        computed: {
+            prevIndex() {
+                if(this.nowIndex === 0){
+                    return this.slides.length - 1;  // return的值直接赋值到prevIndex上
+                }
+                else{
+                    return this.nowIndex - 1;
+                }
+            },
+        }
+```
+## 32  vue开发请求本地模拟数据的配置方法 
+       http://blog.csdn.net/firebird_one/article/details/78656500
+## 33  vue技巧1：  
+        部分区域显示和隐藏，可以通过设置一个变量的true，false来控制这块区域的显示隐藏
+
 
 
 
