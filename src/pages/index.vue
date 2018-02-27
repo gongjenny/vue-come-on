@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="index-right">
-            <slide-show :slides="slides" :invTime = "invTime"></slide-show>
+            <slide-show :slides="slides" :invTime = "invTime" @onchange = 'changeSlide'></slide-show>
             <div class="index-board-list">
                 <div class="index-board-item" 
                 v-for="(item,index) in boardList"
@@ -53,6 +53,11 @@ export default {
         },(err) => {
             console.log(err)
         })
+    },
+    methods: {
+        changeSlide(){
+            // console.log(11);
+        }
     },
     data(){
         return {

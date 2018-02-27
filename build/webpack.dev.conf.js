@@ -10,8 +10,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+const express = require('express')
+const app = express()
 var appData = require('../db.json')//加载本地数据文件
 var getNewsList = appData.getNewsList//获取对应的本地数据
+var login = appData.login
+var apiRoutes = express.Router()
+app.use('/api', apiRoutes)
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -30,6 +35,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           errno: 0,
           data: getNewsList
+        })//接口返回json数据，上面配置的数据,就赋值给data请求后调用
+      }),
+      app.post('/api/login', (req, res) => {
+        res.json({
+          errno: 0,
+          data: login
         })//接口返回json数据，上面配置的数据,就赋值给data请求后调用
       })
     },

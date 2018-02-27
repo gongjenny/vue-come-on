@@ -26,7 +26,7 @@
 ## 6、导出文件内容
     export default{} 是es6 的新语法，相当于导出里面的内容
 ## 7、直接赋值不能更新页面
-    vue  要想改变 data 里面定义的数组的值，要用vue.set('要改的数组','要改的位置','要改成的值')
+    vue  要想改变 data 里面定义的数组的值，要用vue.set('要改的数组','要改的下标','要改成的值')
 ## 8、vue使用自定义事件
     父组件引入子组件，想要使用子组件中的元素触发父组件中的某一个事件，子组件可以使用.$emit("父组件中自定义的方法名称"，"传递的参数")方法实现。
     子组件向外发布事件：通过 $emit 给父组件 传递方法。
@@ -71,22 +71,22 @@
 ## 25、基础知识学会了，写项目目前没遇到什么不懂的问题，真棒~！继续加油了！！！
 ## 26、vue-resource
     是 ajax 请求数据的一个插件
-## 27、安装本地的测试服务器 
+## 27、配置本地的数据交互 (即本地模拟数据交互)
     VUE开发请求本地数据的配置，早期的vue-lic下面有dev-server.js和dev-client.js两文件，请求本地数据在dev-server.js里配置，最新的vue-webpack-template 中已经去掉了dev-server.js和dev-client.js 改用webpack.dev.conf.js代替；
     具体操作如下,打开webpack.dev.conf.js：
 ``` 
     1.在const portfinder = require('portfinder')后添加如下代码：
 
     var appData = require('../data.json')//加载本地数据文件，创建data.json文件，和入口文件index.html同级
-    var seller = appData.seller//获取对应的本地数据，后面'seller' 是data.json里面的数据，前面的'seller'用来对应后面的名称配置
+    var getNewsList = appData.getNewsList//获取对应的本地数据，后面'getNewsList' 是data.json里面的数据，前面的'getNewsList'用来对应后面的名称配置
 ```
 ``` 
     2.然后找到devServer,在里面添加:
     before(app) {
-        app.get('/api/seller', (req, res) => { // 'seller' 对应上面的配置
+        app.get('/api/getNewsList', (req, res) => { // 'getNewsList' 对应上面的配置
             res.json({
-            errno: 0,
-            data: seller
+                errno: 0,
+                data: seller
             })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
         })
     }
@@ -96,21 +96,21 @@
        npm run dev
 ```
 ```
-    4、调取接口
+    4、调取本地接口
        created:function(){
-        this.$http.get('api/getNewsList').then(function(data){
-            _this.newList = res.data.data; // 注意是两个data哦！
-        },function(err){
-            console.log(err)
-        })
-    },
+            this.$http.get('api/getNewsList').then(function(data){
+                _this.newList = res.data.data; // 注意是两个data哦！
+            },function(err){
+                console.log(err)
+            })
+        },
 ```
 
 
 ```
     5、给出data.json的数据
     {
-        "seller": {
+        "getNewsList": {
             "name": "粥品香坊（回龙观）",
             "avatar": "http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg",
             "infos": "该商家支持发票,请下单写好发票抬头"
@@ -119,7 +119,7 @@
 ```
 ```
     6、输入下面地址，可看api内容
-       http://localhost:8080/api/seller
+       http://localhost:8080/api/getNewsList
 ```
 
 ## 28、img 图片引入
@@ -151,4 +151,8 @@
             },
         }
 ```
-## 3  第六章 第八节  现在遇到一个问题: 轮播图 点击1234 没有反应
+## 32  vue开发请求本地模拟数据的配置方法 
+       http://blog.csdn.net/firebird_one/article/details/78656500
+## 33  vue技巧1：  部分区域显示和隐藏，可以通过设置一个变量的true，false来控制这块区域的显示隐藏
+
+## 34  第七章  第一节   商品购买详情页    加油吧小女子，你马上就要过瓶颈期了，胜利的曙光就在眼前！

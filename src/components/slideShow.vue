@@ -1,5 +1,5 @@
 <template>
-    <div class="slide-show" @mousemove="cleardev()" @mouseout="rundev()">
+    <div class="slide-show" @mouseover="cleardev" @mouseout="rundev">
         <div class="slide-img">
             <a :href="slides[nowIndex].href">
                 <transition name="slide-trans">
@@ -14,7 +14,7 @@
         <ul class="slide-pages">
             <li @click="goto(prevIndex)">&lt;</li>
             <li v-for="(item,index) in slides" @click="goto(index)">
-                <a href="" >{{index + 1}}</a>
+                <a :class="{on: index === nowIndex}" >{{index + 1}}</a>
             </li>
             <li @click="goto(nextIndex)">&gt;</li>
         </ul>
@@ -65,6 +65,7 @@ export default {
           setTimeout(()=>{
               this.isShow = true;
               this.nowIndex = index;
+              this.$emit('onchange',index)
           },10)
       },
       rundev(){
