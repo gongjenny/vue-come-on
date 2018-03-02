@@ -73,7 +73,7 @@ export default {
         this.username = data.data.data.username;
     },
     quit(){
-
+        this.username = '';
     }
   }
 }
